@@ -8,45 +8,60 @@
 
   <meta property="og:title" content="Noah Cagle | Links">
   <meta property="og:description" content="I make things do what they aren't supposed to do.">
-  <meta property="og:image" content="pfp.png">
-  <meta property="og:image:width" content="500">
-  <meta property="og:image:height" content="500">
+  <meta property="og:image" content="https://www.decacagle.com/pfp.png">
+  <meta property="og:image:width" content="272">
+  <meta property="og:image:height" content="272">
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.decacagle.com/">
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Noah Cagle | Links">
   <meta name="twitter:description" content="I make things do what they aren't supposed to do.">
-  <meta name="twitter:image" content="pfp.png">
+  <meta name="twitter:image" content="https://www.decacagle.com/pfp.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    :root {
+      --paper: #efede6;
+      --ink: #161512;
+      --muted: #6e6a60;
+      --rule: #cfcabd;
+      --accent: #e2471c;
+      --sans: "Archivo", "Helvetica Neue", Arial, sans-serif;
+      --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
     }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --paper: #141412;
+        --ink: #ecebe5;
+        --muted: #8d897f;
+        --rule: #34322d;
+        --accent: #ff6a3d;
+      }
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { background: var(--paper); }
 
     body {
       min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 48px 20px;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      background: #05060a;
-      background-image:
-        radial-gradient(ellipse 90% 60% at 50% -10%, rgba(140, 80, 255, 0.45), transparent 70%),
-        radial-gradient(ellipse 70% 50% at 20% 110%, rgba(110, 60, 220, 0.28), transparent 70%),
-        radial-gradient(ellipse 60% 40% at 90% 100%, rgba(180, 100, 255, 0.18), transparent 70%);
-      color: #e8eaf0;
+      padding: clamp(40px, 10vh, 96px) 20px 40px;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.4;
+      -webkit-font-smoothing: antialiased;
     }
 
-    .container {
-      width: 100%;
-      max-width: 480px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 14px;
+    main {
+      max-width: 440px;
+      margin: 0 auto;
       animation: fadeIn 1s ease both;
     }
 
@@ -55,163 +70,214 @@
       to   { opacity: 1; }
     }
 
+    /* ---- header ---- */
+
+    header {
+      display: grid;
+      grid-template-columns: 84px 1fr;
+      gap: 18px;
+      align-items: end;
+      padding-bottom: 28px;
+    }
+
     .avatar {
-      width: 96px;
-      height: 96px;
-      border-radius: 50%;
+      width: 84px;
+      height: 84px;
+      display: block;
       object-fit: cover;
-      box-shadow: 0 0 0 3px #05060a, 0 0 0 5px rgba(180, 130, 255, 0.35);
-      margin-bottom: 6px;
+      border-radius: 3px;
+      outline: 1px solid var(--ink);
+      outline-offset: 3px;
       user-select: none;
     }
 
     h1 {
-      font-size: 22px;
-      font-weight: 700;
+      font-size: 34px;
+      font-weight: 800;
+      font-stretch: 112%;
+      letter-spacing: -0.025em;
+      line-height: 0.95;
     }
 
     .tagline {
-      font-size: 14px;
-      color: #8b90a0;
-      text-align: center;
-      margin-bottom: 18px;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 15px;
     }
 
-    .links {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
+    /* ---- link lists ---- */
+
+    a { color: inherit; text-decoration: none; }
+
+    a:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: -2px;
     }
 
-    .link-card {
+    .primary {
+      list-style: none;
+      border-top: 1.5px solid var(--ink);
+    }
+
+    .primary li { border-bottom: 1px solid var(--rule); }
+
+    .primary a {
       display: flex;
       align-items: center;
-      gap: 14px;
-      width: 100%;
-      padding: 16px 20px;
-      border-radius: 14px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.09);
-      color: #e8eaf0;
-      text-decoration: none;
-      font-size: 16px;
-      font-weight: 600;
-      transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 18px 10px 18px 2px;
     }
 
-    .link-card:hover,
-    .link-card:focus-visible {
-      transform: translateY(-2px);
-      background: rgba(255, 255, 255, 0.09);
-      border-color: rgba(255, 255, 255, 0.22);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    .primary .label {
+      display: block;
+      font-size: 21px;
+      font-weight: 700;
+      font-stretch: 105%;
+      letter-spacing: -0.01em;
     }
 
-    .link-card svg {
-      width: 24px;
-      height: 24px;
+    .primary .dest,
+    .social .handle {
+      display: block;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted);
+      overflow-wrap: anywhere;
+    }
+
+    .primary .dest { margin-top: 3px; }
+
+    .arrow {
+      font-family: var(--mono);
+      font-size: 18px;
       flex-shrink: 0;
+      transition: transform 0.12s ease-out;
     }
 
-    .link-card span {
-      flex: 1;
-      text-align: center;
-      /* offset the icon width so the label sits visually centered */
-      margin-right: 38px;
+    .primary a:hover .arrow { transform: translate(2px, -2px); color: var(--accent); }
+
+    .social {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      margin-top: 36px;
+      border-top: 1.5px solid var(--ink);
     }
 
-    .socials {
-      display: flex;
-      gap: 18px;
-      margin-top: 10px;
-    }
+    .social li { border-bottom: 1px solid var(--rule); }
+    .social li:nth-child(odd) { border-right: 1px solid var(--rule); }
 
-    .social-icon {
-      width: 56px;
-      height: 56px;
-      border-radius: 50%;
-      display: flex;
+    .social a {
+      display: grid;
+      grid-template-columns: 18px 1fr;
+      column-gap: 10px;
       align-items: center;
-      justify-content: center;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.09);
-      color: #e8eaf0;
-      transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+      padding: 14px 12px;
     }
 
-    .social-icon:hover,
-    .social-icon:focus-visible {
-      transform: translateY(-3px);
-      background: rgba(255, 255, 255, 0.09);
-      border-color: rgba(255, 255, 255, 0.22);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    .social svg {
+      width: 18px;
+      height: 18px;
+      grid-row: span 2;
     }
 
-    .social-icon svg {
-      width: 26px;
-      height: 26px;
+    .social .name {
+      font-weight: 600;
+      font-size: 15px;
     }
 
-    .social-icon.youtube:hover { color: #ff0033; }
-    .social-icon.tiktok:hover { color: #69c9d0; }
-    .social-icon.instagram:hover { color: #e1306c; }
-    .social-icon.discord:hover { color: #5865f2; }
-    .link-card.merch:hover svg { color: #ffb84d; }
-    .link-card.gitlab:hover svg { color: #fc6d26; }
+    .primary a:hover,
+    .social a:hover {
+      background: var(--ink);
+      color: var(--paper);
+    }
+
+    .primary a:hover .dest,
+    .social a:hover .handle { color: var(--paper); opacity: 0.65; }
 
     footer {
-      margin-top: 28px;
-      font-size: 12px;
-      color: #565b6b;
+      margin-top: 40px;
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      main { animation: none; }
+      .arrow { transition: none; }
     }
   </style>
 </head>
 <body>
-  <main class="container">
-    <img class="avatar" src="pfp.png" alt="Noah Cagle's profile picture">
-    <h1>Noah Cagle</h1>
-    <p class="tagline">I make things do what they aren't supposed to do.</p>
+  <main>
+    <header>
+      <img class="avatar" src="pfp.png" alt="Noah Cagle's profile picture">
+      <div>
+        <h1>Noah Cagle</h1>
+        <p class="tagline">I make things do what they aren't supposed to do.</p>
+      </div>
+    </header>
 
-    <nav class="links" aria-label="Main links">
-      <a class="link-card merch" href="https://noah-cagle-shop.fourthwall.com" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/>
-          <path d="M3 6h18"/>
-          <path d="M16 10a4 4 0 0 1-8 0"/>
-        </svg>
-        <span>Cool Shirts</span>
-      </a>
-      <a class="link-card gitlab" href="https://www.gitlab.com/users/DecaCagle/projects" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path d="m23.6 9.593-.033-.086L20.3.98a.851.851 0 0 0-.336-.405.875.875 0 0 0-1 .054.875.875 0 0 0-.29.44l-2.206 6.748H7.533L5.327 1.068a.858.858 0 0 0-.29-.441.875.875 0 0 0-1-.054.86.86 0 0 0-.336.405L.433 9.502l-.032.086a6.066 6.066 0 0 0 2.012 7.01l.011.009.03.021 4.977 3.727 2.462 1.863 1.5 1.132a1.009 1.009 0 0 0 1.22 0l1.499-1.132 2.461-1.863 5.006-3.75.013-.01a6.068 6.068 0 0 0 2.008-7.002Z"/>
-        </svg>
-        <span>GitLab Projects</span>
-      </a>
-    </nav>
+    <ul class="primary">
+      <li>
+        <a href="https://noah-cagle-shop.fourthwall.com" target="_blank" rel="noopener">
+          <span>
+            <span class="label">Cool Shirts</span>
+            <span class="dest">noah-cagle-shop.fourthwall.com</span>
+          </span>
+          <span class="arrow" aria-hidden="true">↗</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://www.gitlab.com/users/DecaCagle/projects" target="_blank" rel="noopener">
+          <span>
+            <span class="label">GitLab Projects</span>
+            <span class="dest">gitlab.com/DecaCagle</span>
+          </span>
+          <span class="arrow" aria-hidden="true">↗</span>
+        </a>
+      </li>
+    </ul>
 
-    <nav class="socials" aria-label="Social media">
-      <a class="social-icon youtube" href="https://www.youtube.com/@noah-cagle" target="_blank" rel="noopener" aria-label="YouTube channel">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path d="M23.5 6.19a3.02 3.02 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.51A3.02 3.02 0 0 0 .5 6.19C0 8.07 0 12 0 12s0 3.93.5 5.81a3.02 3.02 0 0 0 2.123 2.136c1.872.509 9.377.509 9.377.509s7.505 0 9.377-.51A3.02 3.02 0 0 0 23.5 17.81C24 15.93 24 12 24 12s0-3.93-.5-5.81ZM9.545 15.568V8.432L15.818 12l-6.273 3.568Z"/>
-        </svg>
-      </a>
-      <a class="social-icon tiktok" href="https://www.tiktok.com/@noahcagle" target="_blank" rel="noopener" aria-label="TikTok">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64c.298 0 .595.048.88.14V9.4a6.84 6.84 0 0 0-.88-.05A6.33 6.33 0 0 0 5.1 20.14a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1.14-.14Z"/>
-        </svg>
-      </a>
-      <a class="social-icon instagram" href="https://www.instagram.com/noahcagleyt" target="_blank" rel="noopener" aria-label="Instagram">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069Zm0-2.163C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12s.014 3.668.072 4.948c.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24s3.668-.014 4.948-.072c4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948s-.014-3.667-.072-4.947c-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0Zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324ZM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881Z"/>
-        </svg>
-      </a>
-      <a class="social-icon discord" href="https://discord.gg/quz8JmKaDY" target="_blank" rel="noopener" aria-label="Discord server">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path d="M20.317 4.369A19.79 19.79 0 0 0 16.558 3.2a.075.075 0 0 0-.079.037c-.34.6-.719 1.384-.984 2.001a18.27 18.27 0 0 0-5.487 0 12.51 12.51 0 0 0-.998-2.001.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.369a.07.07 0 0 0-.032.028C.533 9.045-.32 13.579.099 18.057a.082.082 0 0 0 .031.056 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.105 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .078.009c.12.099.246.198.373.292a.077.077 0 0 1-.006.128 12.3 12.3 0 0 1-1.873.891.077.077 0 0 0-.041.106c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.84 19.84 0 0 0 6.002-3.03.077.077 0 0 0 .032-.055c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.029ZM8.02 15.331c-1.183 0-2.157-1.086-2.157-2.42 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.955 2.419-2.157 2.419Zm7.975 0c-1.183 0-2.157-1.086-2.157-2.42 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.419-2.157 2.419Z"/>
-        </svg>
-      </a>
-    </nav>
+    <ul class="social" aria-label="Social media">
+      <li>
+        <a href="https://www.youtube.com/@noah-cagle" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M23.5 6.19a3.02 3.02 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.51A3.02 3.02 0 0 0 .5 6.19C0 8.07 0 12 0 12s0 3.93.5 5.81a3.02 3.02 0 0 0 2.123 2.136c1.872.509 9.377.509 9.377.509s7.505 0 9.377-.51A3.02 3.02 0 0 0 23.5 17.81C24 15.93 24 12 24 12s0-3.93-.5-5.81ZM9.545 15.568V8.432L15.818 12l-6.273 3.568Z"/>
+          </svg>
+          <span class="name">YouTube</span>
+          <span class="handle">@noah-cagle</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://www.tiktok.com/@noahcagle" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64c.298 0 .595.048.88.14V9.4a6.84 6.84 0 0 0-.88-.05A6.33 6.33 0 0 0 5.1 20.14a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1.14-.14Z"/>
+          </svg>
+          <span class="name">TikTok</span>
+          <span class="handle">@noahcagle</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://www.instagram.com/noahcagleyt" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069Zm0-2.163C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12s.014 3.668.072 4.948c.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24s3.668-.014 4.948-.072c4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948s-.014-3.667-.072-4.947c-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0Zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324ZM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881Z"/>
+          </svg>
+          <span class="name">Instagram</span>
+          <span class="handle">@noahcagleyt</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://discord.gg/quz8JmKaDY" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M20.317 4.369A19.79 19.79 0 0 0 16.558 3.2a.075.075 0 0 0-.079.037c-.34.6-.719 1.384-.984 2.001a18.27 18.27 0 0 0-5.487 0 12.51 12.51 0 0 0-.998-2.001.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.369a.07.07 0 0 0-.032.028C.533 9.045-.32 13.579.099 18.057a.082.082 0 0 0 .031.056 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.105 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .078.009c.12.099.246.198.373.292a.077.077 0 0 1-.006.128 12.3 12.3 0 0 1-1.873.891.077.077 0 0 0-.041.106c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.84 19.84 0 0 0 6.002-3.03.077.077 0 0 0 .032-.055c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.029ZM8.02 15.331c-1.183 0-2.157-1.086-2.157-2.42 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.955 2.419-2.157 2.419Zm7.975 0c-1.183 0-2.157-1.086-2.157-2.42 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.419-2.157 2.419Z"/>
+          </svg>
+          <span class="name">Discord</span>
+          <span class="handle">join the server</span>
+        </a>
+      </li>
+    </ul>
 
     <footer>&copy; 2026 Noah Cagle</footer>
   </main>
